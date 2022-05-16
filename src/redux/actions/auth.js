@@ -8,10 +8,10 @@ export const loginUser = (email, password) => async (dispatch) => {
       password,
     });
     const { data, message, success } = res.data;
+    console.log(data)
 
     if (success) {
-      // save the token to local storage
-      localStorage.setItem("token", data.token);
+       localStorage.setItem("token", data.token);
       dispatch({
         type: "LOGIN_SUCCESS",
         payload: data,
@@ -36,14 +36,15 @@ export const loginUser = (email, password) => async (dispatch) => {
 };
 
 export const loadUser = () => async (dispatch) => {
-  const token = localStorage.getItem("token");
-  const base64 = token.split('.')[1]
-  const {email,id} = JSON.parse(atob(base64))
+  const token = localStorage.getItem("token")??null;
+
 
   if (token) {
+    const base64 = token.split('.')[1]
+    const {email,id,role} = JSON.parse(atob(base64))
     dispatch({
       type: "LOAD_USER",
-      payload: { token, user: {email,id} },
+      payload: { token, user: {email,id,role} },
     });
   } else {
     dispatch({
@@ -51,4 +52,14 @@ export const loadUser = () => async (dispatch) => {
       payload: {},
     });
   }
+};
+
+
+
+export const logout = () => (dispatch) => {
+    localStorage.removeItem('token')
+    dispatch({
+      type: "LOGOUT",
+    });
+    toast.success("User logged out")
 };

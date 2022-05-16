@@ -73,7 +73,7 @@ const Login = ()=> {
                 _hover={{
                   bg: 'blue.500',
                 }}>
-                Login in
+                Login
               </Button>
             </Stack>
           </Stack>
