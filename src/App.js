@@ -10,11 +10,15 @@ import Home from './components/Home'
 import Login from "./components/auth/Login";
 import Admin from "./components/admin/Admin";
 import AdminWrapper from "./components/HOC/AdminWrapper";
+import Navbar from "./layout/Navbar";
+import { getProducts } from "./redux/actions/product";
+import Products from "./components/product/Products";
 
 const App = () => {
   const dispatch = useDispatch()
   useEffect(()=>{
     dispatch(loadUser())
+    dispatch(getProducts())
   },[])
 
 
@@ -25,8 +29,10 @@ const App = () => {
         dispatch(logout())
         window.location.reload()
       }} >Logout</button> */}
+      <Navbar/>
       <Routes>
         <Route path="/" element={<Home/>}  />
+        <Route path="/shop" element={<Products/>}  />
         <Route path="/login" element={<Login/>}  />
         <Route path="/admin" element={<AdminWrapper><Admin/></AdminWrapper>}  />
       </Routes>
