@@ -13,6 +13,8 @@ import AdminWrapper from "./components/HOC/AdminWrapper";
 import Navbar from "./layout/Navbar";
 import { getProducts } from "./redux/actions/product";
 import Products from "./components/product/Products";
+import Product from "./components/product/Product";
+import Footer from "./layout/Footer";
 
 const App = () => {
   const dispatch = useDispatch()
@@ -33,9 +35,11 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home/>}  />
         <Route path="/shop" element={<Products/>}  />
+        <Route path="/shop/:id" element={<Product/>}  />
         <Route path="/login" element={<Login/>}  />
         <Route path="/admin" element={<AdminWrapper><Admin/></AdminWrapper>}  />
       </Routes>
+      <Footer/>
     </div>
    );
 }
