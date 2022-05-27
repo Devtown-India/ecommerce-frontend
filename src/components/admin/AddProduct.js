@@ -54,8 +54,9 @@ const AddProduct = () => {
                 <Input onChange={(e) => { setDescription(e.target.value) }} type="text" />
                 <FormLabel>Category</FormLabel>
                 <Select onChange={(e) => {
-                    const { _id } = categories.find(category => category.name == e.target.value)
-                    setCategory(_id)
+                    console.log(e.target.value)
+                    // const { _id } = categories.find(category => category.name == e.target.value)
+                    // setCategory(_id)
                 }} placeholder="Select product's category">
                     {
                         categories && categories.map(category => {

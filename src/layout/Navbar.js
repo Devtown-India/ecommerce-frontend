@@ -22,6 +22,7 @@ import { Link as lee } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { logout } from '../redux/actions/auth';
+import CartPreview from '../components/cart/CartPreview';
 // import CartPreview from '../components/cart/CartPreview';
 
 export default function Navbar() {
@@ -62,7 +63,7 @@ export default function Navbar() {
 
                 {token ?
                     <>
-                        {/* <CartPreview /> */}
+                        <CartPreview />
                         <Button
                         onClick={()=>dispatch(logout())}
                             as={lee}

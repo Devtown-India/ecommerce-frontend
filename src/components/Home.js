@@ -63,7 +63,7 @@ const Home = ()=> {
               colorScheme={'red'}
               bg={'yellow.400'}
               _hover={{ bg: 'red.500' }}>
-              ted
+              Shop Now
             </Button>
             <Button
               rounded={'full'}
